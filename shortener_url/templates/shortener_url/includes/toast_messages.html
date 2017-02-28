@@ -1,0 +1,14 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}        
+          toastr['{{category}}']("{{message}}");
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+        
+});
+</script>
+

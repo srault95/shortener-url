@@ -1,0 +1,27 @@
+{% extends 'admin/model/details.html' %}
+
+{% block details_search %}
+{% endblock details_search %}
+
+{% block navlinks %}
+<ul class="nav nav-tabs">
+  <li role="presentation">
+      <a href="{{ return_url }}">{{ _gettext('List') }}</a>
+  </li>
+  {%- if admin_view.can_create -%}
+  <li role="presentation">
+      <a href="{{ get_url('.create_view', url=return_url) }}">{{ _gettext('Create') }}</a>
+  </li>
+  {%- endif -%}
+  {%- if admin_view.can_edit -%}
+  <li role="presentation">
+      <a href="{{ get_url('.edit_view', id=request.args.get('id'), url=return_url) }}">{{ _gettext('Edit') }}</a>
+  </li>
+  {%- endif -%}
+  <li role="presentation" class="active">
+      <a href="#details" aria-controls="details" role="tab" data-toggle="tab">{{ _gettext('Details') }}</a>
+  </li>
+  {% block navlinks_add %}
+  {% endblock navlinks_add %}
+</ul>
+{% endblock %}

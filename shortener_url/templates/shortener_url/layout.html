@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/google.html" as google %}
+{% block title %}{{title|default('Shortener URL Home')}}{% endblock %}
+
+{%- block metas %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+{%- endblock metas %}
+
+{% block styles %}
+	{{super()}}
+    {% assets "common_css" %}
+	    <link href="{{ ASSET_URL }}" rel="stylesheet" />
+    {% endassets %}
+{% endblock %}
+
+{% block scripts %}
+	{{super()}}
+    
+    {% assets "common_js" %}
+	    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    
+    {#
+    {{ moment.include_moment(local_js=url_for('static', filename="local/moment.min.js")) }}
+    <script type="text/javascript">
+    	moment.locale('{{config.DEFAULT_LANG}}');
+    </script>
+    #}
+	
+	<!-- before toast -->
+	<script type="text/javascript" src="{{ url_for('static', filename="script.js") }}"></script>
+	
+	{% include "shortener_url/includes/toast_messages.html" %}
+	
+	{% if config.GOOGLE_ANALYTICS_ID %}
+		{{google.uanalytics(config.GOOGLE_ANALYTICS_ID)}}
+	{% endif %}
+
+{% endblock scripts %}
+

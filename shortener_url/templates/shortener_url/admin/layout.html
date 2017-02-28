@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+
+{% block head_css %}
+{{super()}}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+{% endblock head_css %}
+
+{% block access_control %}
+{% if current_user.is_authenticated %}
+<div class="btn-group pull-right">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-user"></i> {{ current_user.login }} <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="{{ url_for('admin.logout_view') }}">Log out</a></li>
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block tail %}
+    {{ super() }}
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //change contenair to contenair-fluid on flask-admin/base.html
+        var ct = $('div.container:first');
+        ct.removeClass("container");
+        ct.addClass("container-fluid");
+        
+    });
+    </script>
+{% endblock tail %}
