@@ -1,5 +1,5 @@
 include README.md
-include requirements.txt
+include requirements
 include setup.cfg
-recursive-include shortener *
+recursive-include shortener_url *
 global-exclude *.pyc
