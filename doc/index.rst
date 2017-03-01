@@ -44,7 +44,6 @@ Indices and tables
     :target: https://landscape.io/github/srault95/shortener-url/master
     :alt: Landscape Status          
 
-.. |docs| image:: http://shortener-url.readthedocs.io/en/latest/?badge=latest
+.. |docs| image:: https://readthedocs.org/projects/shortener-url/badge/?version=latest
     :target: http://shortener-url.readthedocs.io/en/latest
     :alt: Documentation Status          
-
