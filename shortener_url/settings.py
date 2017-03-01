@@ -11,7 +11,7 @@ class Config(object):
     SESSION_PROTECTION = 'strong'
 
     DB_SETTINGS = {
-        'host': config('SHORTURL_MONGODB_URL', 'mongodb://127.0.0.1/shorturl'),
+        'host': config('SHORTURL_DB_URL', 'mongodb://mongo/shorturl'),
         'db': 'shorturl'
     }        
     
@@ -95,7 +95,7 @@ class Dev(Config):
 class Test(Config):
 
     DB_SETTINGS = {
-        'host': config('SHORTURL_MONGODB_URL', 'mongodb://127.0.0.1/shorturl_test'),
+        'host': config('SHORTURL_DB_URL', 'mongodb://mongo/shorturl_test'),
         'db': 'shorturl_test'
     }        
     COUNTERS_ENABLE = False
