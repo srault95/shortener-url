@@ -1,10 +1,12 @@
 FROM python:3.4
 
+ARG mode=prod
+
 ADD . /code/
 
 WORKDIR /code/
 
-RUN pip install -r requirements/prod.txt \
+RUN pip install -r requirements/${mode:-prod}.txt \
     && pip install https://github.com/benoitc/gunicorn/tarball/master \
     && pip install --no-deps -e .
 
