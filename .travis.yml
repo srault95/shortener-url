@@ -34,6 +34,6 @@ script:
 after_script: COVERAGE_FILE=./coverage/.coverage coveralls --verbose
 
 notifications:
-  email: true
-  on_success: always
-  on_failure: always
+  email:
+    on_success: always
+    on_failure: always
