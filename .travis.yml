@@ -12,14 +12,14 @@ cache:
   - apt
   
 env:
-  - MONGO_IMAGE=mongo:3.4 REDIS_IMAGE=redis:latest DOCKER_OPTIONS="-e USE_MONGO_SERVER=1 -e SHORTURL_MONGODB_URL=mongodb://mongodb/shorturl_test --link=mongodb:mongodb -e SHORTURL_REDIS_URL=redis://redis:6379/0 --link=redis:redis --rm"
+  - MONGO_IMAGE=mongo:3.4 REDIS_IMAGE=redis:latest DOCKER_OPTIONS="-e USE_MONGO_SERVER=1 -e SHORTURL_DB_URL=mongodb://mongodb/shorturl_test --link=mongodb:mongodb -e SHORTURL_REDIS_URL=redis://redis:6379/0 --link=redis:redis --rm"
 
 before_install:
   - docker pull $MONGO_IMAGE
   - docker pull $REDIS_IMAGE
   - docker run -d --name=mongodb $MONGO_IMAGE mongod --noauth 
   - docker run -d --name=redis $REDIS_IMAGE redis-server --appendonly yes 
-  - docker build -t shortener_url -f DockerfileTests .
+  - docker build -t shortener_url --build-arg mode=tests .
   - pip install coveralls
  
 before_script:
