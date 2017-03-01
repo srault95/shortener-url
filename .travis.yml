@@ -15,6 +15,8 @@ env:
   - MONGO_IMAGE=mongo:3.4 REDIS_IMAGE=redis:latest DOCKER_OPTIONS="-e USE_MONGO_SERVER=1 -e SHORTURL_DB_URL=mongodb://mongodb/shorturl_test --link=mongodb:mongodb -e SHORTURL_REDIS_URL=redis://redis:6379/0 --link=redis:redis --rm"
 
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install docker-engine
   - docker pull $MONGO_IMAGE
   - docker pull $REDIS_IMAGE
   - docker run -d --name=mongodb $MONGO_IMAGE mongod --noauth 
